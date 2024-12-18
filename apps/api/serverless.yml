@@ -1,0 +1,39 @@
+service: reacttrpc-starter
+frameworkVersion: "3"
+useDotenv: true
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs18.x
+  stage: ${env:NODE_ENV}
+
+  logRetentionInDays: 180
+  versionFunctions: false
+
+functions:
+  http-api:
+    handler: src/functions/server.handler
+    events:
+      - httpApi: "*"
+  rest-api:
+    handler: src/functions/server.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+
+  version:
+    handler: src/functions/version.handler
+    events:
+      - httpApi:
+          path: /version
+          method: GET
+
+custom:
+  esbuild:
+    platform: neutral
