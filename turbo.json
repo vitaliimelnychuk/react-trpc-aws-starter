@@ -1,0 +1,39 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "dependsOn": ["db:generate"]
+    },
+    "build": {
+      "dependsOn": ["db:generate", "^build"],
+      "outputs": ["dist/**"]
+    },
+    "web#build": {
+      "dependsOn": ["api#build"]
+    },
+    "lint": {},
+    "lint:fix": {},
+    "format": {},
+    "test": {
+      "dependsOn": ["db:generate"]
+    },
+    "coverage": {
+      "dependsOn": ["db:generate"]
+    },
+    "format:fix": {},
+    "db:migrate": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:deploy": {
+      "cache": false
+    },
+    "check": {
+      "dependsOn": ["lint", "format", "test"]
+    },
+    "clean": {}
+  }
+}

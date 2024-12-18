@@ -1,0 +1,14 @@
+node_modules
+dist
+.turbo
+
+# Turbo Prune out command
+/out
+
+# Environment variables
+.env
+
+# JEST test files
+coverage
+
+.sentryclirc

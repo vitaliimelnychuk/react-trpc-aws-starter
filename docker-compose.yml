@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql:8.0.37
+    command: mysqld
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: reacttrpc_starter
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./configs/my.cnf:/etc/mysql/conf.d/my.cnf"
