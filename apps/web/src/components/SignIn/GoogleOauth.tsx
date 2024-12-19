@@ -6,10 +6,10 @@ import {
 import { trpc } from '@web/api';
 import { GoogleIcon } from '@web/components/ui/icons';
 import { GOOGLE_CLIENT_ID } from '@web/config';
-// import { UserContext, UserContextType } from '@web/contexts/User';
+import { UserContext, UserContextType } from '@web/contexts/User';
 import { toast } from '@web/hocs/useToast';
 import { cx } from '@web/utility';
-// import { useContext } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type SingInButtonGoogleProps = {
@@ -17,7 +17,7 @@ type SingInButtonGoogleProps = {
 };
 
 const SingInButtonGoogle = ({ className }: SingInButtonGoogleProps) => {
-  // const { login }: UserContextType = useContext(UserContext);
+  const { login }: UserContextType = useContext(UserContext);
   const { t } = useTranslation();
 
   const googleAuthMutation = trpc.googleAuth.useMutation();
@@ -40,7 +40,7 @@ const SingInButtonGoogle = ({ className }: SingInButtonGoogleProps) => {
           code
         });
 
-        // login(jwt);
+        login(jwt);
         toast({
           title: t('toast.success'),
           description: t('signIn.toast.success'),

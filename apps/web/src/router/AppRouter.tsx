@@ -1,4 +1,4 @@
-// import { useUserContext } from '@web/contexts/User';
+import { useUserContext } from '@web/contexts/User';
 import { DashboardView } from '@web/pages/Dashboard';
 import NotFoundView from '@web/pages/layout/NotFoundView/NotFoundView';
 import { SingInView } from '@web/pages/SingIn';
@@ -28,7 +28,7 @@ export const appRoutesList = [
 ];
 
 export function AppRouter() {
-  // const { currentUser } = useUserContext();
+  const { currentUser } = useUserContext();
 
   return (
     <Routes>
@@ -37,7 +37,7 @@ export function AppRouter() {
           key={url}
           path={url}
           element={
-            <WrapperComponent>
+            <WrapperComponent user={currentUser}>
               <ViewComponent />
             </WrapperComponent>
           }

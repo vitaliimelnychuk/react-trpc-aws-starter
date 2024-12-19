@@ -1,11 +1,10 @@
-// import { RouterOutputs } from '@web/lib/trpc';
+import { RouterOutputs } from '@web/api';
 import { dashboardUrl, singInUrl } from '@web/router/urls';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 type RedirectArgsType = {
-  // user?: RouterOutputs['currentUser'] | null;
-  user?: {} | null;
+  user?: RouterOutputs['currentUser'] | null;
   children: React.ReactNode;
 };
 
