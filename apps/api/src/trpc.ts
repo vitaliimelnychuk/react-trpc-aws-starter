@@ -1,7 +1,9 @@
+import { logger } from '@api/logger';
 import { initTRPC } from '@trpc/server';
 import type { CreateAWSLambdaContextOptions } from '@trpc/server/adapters/aws-lambda';
 import type { APIGatewayProxyEvent } from 'aws-lambda';
-import { z } from 'zod';
+import { ZodError } from 'zod';
+
 export function createContext({
   event
 }: CreateAWSLambdaContextOptions<APIGatewayProxyEvent>) {
@@ -13,17 +15,20 @@ export function createContext({
 }
 type Context = Awaited<ReturnType<typeof createContext>>;
 
-const t = initTRPC.context<Context>().create();
-
-const publicProcedure = t.procedure;
-const router = t.router;
-
-export const appRouter = router({
-  greet: publicProcedure
-    .input(z.object({ name: z.string() }))
-    .query(({ input, ctx }) => {
-      return `Greetings, ${input.name}. x-user?: ${ctx.user}.`;
-    })
+export const trpc = initTRPC.context<Context>().create({
+  errorFormatter: (err) => {
+    logger.error(err.error);
+    const { shape, error } = err;
+    //TODO:  Remove Error 'stack' in production
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        zodError:
+          error.code === 'BAD_REQUEST' && error.cause instanceof ZodError
+            ? error?.cause
+            : null
+      }
+    };
+  }
 });
-
-export type AppRouter = typeof appRouter;

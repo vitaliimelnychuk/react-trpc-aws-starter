@@ -3,11 +3,11 @@ import {
   GoogleOAuthProvider,
   useGoogleLogin
 } from '@react-oauth/google';
+import { trpc } from '@web/api';
 import { GoogleIcon } from '@web/components/ui/icons';
 import { GOOGLE_CLIENT_ID } from '@web/config';
 // import { UserContext, UserContextType } from '@web/contexts/User';
 import { toast } from '@web/hocs/useToast';
-// import { trpc } from '@web/lib/trpc';
 import { cx } from '@web/utility';
 // import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,10 +17,10 @@ type SingInButtonGoogleProps = {
 };
 
 const SingInButtonGoogle = ({ className }: SingInButtonGoogleProps) => {
-  //   const { login }: UserContextType = useContext(UserContext);
+  // const { login }: UserContextType = useContext(UserContext);
   const { t } = useTranslation();
 
-  //   const googleAuthMutation = trpc.googleAuth.useMutation();
+  const googleAuthMutation = trpc.googleAuth.useMutation();
   const googleLogin = useGoogleLogin({
     flow: 'auth-code',
     scope: [
@@ -34,18 +34,24 @@ const SingInButtonGoogle = ({ className }: SingInButtonGoogleProps) => {
         'error' | 'error_description' | 'error_uri'
       >
     ) => {
-      //   const { code } = codeResponse;
+      const { code } = codeResponse;
       try {
-        // const jwt = await googleAuthMutation.mutateAsync({
-        //   code
-        // });
+        const jwt = await googleAuthMutation.mutateAsync({
+          code
+        });
+
         // login(jwt);
+        toast({
+          title: t('toast.success'),
+          description: t('signIn.toast.success'),
+          variant: 'success',
+          duration: 5000
+        });
       } catch (error) {
-        // TODO: Don't show all sensitive errors from the backend
         const errorData = error as { message: string };
         toast({
-          title: t('signIn.alert.title'),
-          description: errorData.message ?? t('signIn.alert.description'),
+          title: t('toast.error'),
+          description: errorData.message ?? t('signIn.toast.failed'),
           variant: 'error',
           duration: 5000
         });

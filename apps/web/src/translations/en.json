@@ -1,6 +1,8 @@
 {
   "toast": {
-    "close": "Close"
+    "close": "Close",
+    "success": "Success",
+    "error": "Error"
   },
   "notFound": {
     "title": "This page does not exist.",
@@ -26,9 +28,9 @@
     "googleOauth": {
       "button": "Sign in with Google"
     },
-    "alert": {
-      "title": "Error",
-      "description": "Failed to sign in"
+    "toast": {
+      "failed": "Failed to sign in",
+      "success": "Signed in successfully"
     }
   },
   "pages": {

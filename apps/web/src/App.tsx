@@ -2,8 +2,8 @@
 import '@web/i18n';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createTRPCClient, trpc } from '@web/api';
 import { Toaster } from '@web/components/ui/Toaster';
-import { createTRPCClient, trpc } from '@web/lib/trpc';
 import { AppRouter } from '@web/router/AppRouter';
 import { getJWT } from '@web/utility/localStorage';
 import { useState } from 'react';

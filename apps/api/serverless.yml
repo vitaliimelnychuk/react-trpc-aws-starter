@@ -15,6 +15,15 @@ provider:
   logRetentionInDays: 180
   versionFunctions: false
 
+  environment:
+    JWT_SECRET: ${env:JWT_SECRET}
+    GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
+    GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
+    GOOGLE_REDIRECT_URI: ${env:GOOGLE_REDIRECT_URI}
+
+    DATABASE_URL: ${env:DATABASE_URL}
+    APP_VERSION: ${env:APP_VERSION}
+
 custom:
   esbuild:
     bundle: true
@@ -25,13 +34,15 @@ functions:
   http-api:
     handler: src/functions/server.handler
     events:
-      - httpApi: '*'
-  rest-api:
-    handler: src/functions/server.handler
-    events:
-      - http:
-          path: /{proxy+}
-          method: any
+      - httpApi:
+          path: '/trpc/{any+}'
+          method: POST
+  # rest-api:
+  #   handler: src/functions/server.handler
+  #   events:
+  #     - http:
+  #         path: /trpc/{proxy+}
+  #         method: any
 
   version:
     handler: src/functions/version.handler

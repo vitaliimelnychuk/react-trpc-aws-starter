@@ -18,16 +18,22 @@
   "dependencies": {
     "@trpc/server": "^10.45.2",
     "aws-lambda": "^1.0.7",
+    "axios": "^1.7.9",
+    "google-auth-library": "^9.15.0",
+    "googleapis": "^144.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "pino": "^9.5.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@reacttrpc-starter/eslint-config": "*",
     "@reacttrpc-starter/prettier-config": "*",
+    "@serverless/typescript": "^3.38.0",
     "@types/aws-lambda": "^8.10.146",
+    "@types/jsonwebtoken": "^9.0.6",
     "serverless": "^3.34.0",
     "serverless-esbuild": "^1.54.6",
-    "serverless-offline": "^13.9.0",
-    "@serverless/typescript": "^3.38.0"
+    "serverless-offline": "^13.9.0"
   },
   "jest": {
     "moduleNameMapper": {

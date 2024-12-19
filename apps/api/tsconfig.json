@@ -2,6 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "sourceMap": true,
+    "types": ["node", "jest"],
     "outDir": "dist",
     "strict": true,
     "lib": ["esnext"],
