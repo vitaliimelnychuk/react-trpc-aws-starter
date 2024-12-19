@@ -1,0 +1,24 @@
+{
+  "name": "@reacttrpc-starter/db",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:deploy": "prisma migrate deploy",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --check \"**/*.{ts,prisma}\"",
+    "format:fix": "prettier --write \"**/*.{ts,prisma}\""
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "dotenv": "^16.4.5",
+    "prisma": "^5.19.1"
+  },
+  "devDependencies": {
+    "@reacttrpc-starter/eslint-config": "*",
+    "@reacttrpc-starter/prettier-config": "*",
+    "prettier-plugin-prisma": "^5.0.0"
+  }
+}
