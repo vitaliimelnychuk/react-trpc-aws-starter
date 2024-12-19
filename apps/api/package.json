@@ -10,7 +10,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "test:watch": "jest --watch",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}'",
     "package": "NODE_ENV=prd sls package",
     "deploy": "NODE_ENV=prd sls deploy --verbose"
