@@ -1,5 +1,6 @@
 {
   "name": "reacttrpc-starter",
+  "packageManager": "npm@11.3.0",
   "version": "1.0.0",
   "license": "MIT",
   "workspaces": [

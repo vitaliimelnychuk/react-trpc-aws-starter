@@ -1,5 +1,5 @@
 service: reacttrpc-starter
-frameworkVersion: "3"
+frameworkVersion: '3'
 useDotenv: true
 
 plugins:
@@ -15,11 +15,17 @@ provider:
   logRetentionInDays: 180
   versionFunctions: false
 
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+
 functions:
   http-api:
     handler: src/functions/server.handler
     events:
-      - httpApi: "*"
+      - httpApi: '*'
   rest-api:
     handler: src/functions/server.handler
     events:
@@ -33,7 +39,3 @@ functions:
       - httpApi:
           path: /version
           method: GET
-
-custom:
-  esbuild:
-    platform: neutral

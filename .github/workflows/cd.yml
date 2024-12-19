@@ -1,0 +1,76 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+      - release-*
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    environment: staging
+    permissions:
+      deployments: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Output vars
+        id: vars
+        run: |
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Use Node.js 20.9.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9.0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node_modules-v1-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            node_modules-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Formatting checks
+        run: npm run format
+
+      - name: Linting checks
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Make .env file
+        working-directory: ./packages/db
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          touch .env
+          echo DATABASE_URL="$DATABASE_URL" >> .env
+
+      # - name: Run migrations
+      #   run: npm run db:deploy
+
+      # - name: <API> Deploy
+      #   working-directory: ./apps/api
+      #   run: npm run deploy
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      #     APP_AWS_ACCESS_KEY_ID: ${{ secrets.APP_AWS_ACCESS_KEY_ID }}
+      #     APP_AWS_SECRET_ACCESS_KEY: ${{ secrets.APP_AWS_SECRET_ACCESS_KEY }}
+
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #     APP_VERSION: ${{ steps.vars.outputs.date }}_${{ steps.vars.outputs.sha_short }}
