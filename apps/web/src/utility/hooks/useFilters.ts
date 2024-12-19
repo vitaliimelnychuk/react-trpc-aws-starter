@@ -10,20 +10,6 @@ export type Filters = {
   page: number | null;
 };
 
-export function parseEnum<T extends Record<string, string>>(
-  queryParams: URLSearchParams,
-  key: string,
-  enumType: T
-): T[keyof T] | null {
-  const value = queryParams.get(key);
-
-  if (value && Object.values(enumType).includes(value)) {
-    return value as T[keyof T];
-  }
-
-  return null;
-}
-
 export function parseNumber(
   queryParams: URLSearchParams,
   key: string
