@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@reacttrpc-starter/*": ["src/*"]
+      "@api/*": ["src/*"]
     }
   },
   "include": ["src/**/*"],

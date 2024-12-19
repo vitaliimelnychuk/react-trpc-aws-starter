@@ -1,0 +1,82 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "@headlessui/react": "^2.1.10",
+    "@headlessui/tailwindcss": "^0.2.1",
+    "@heroicons/react": "^2.1.5",
+    "@radix-ui/react-hover-card": "^1.1.2",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@react-oauth/google": "^0.12.1",
+    "@remixicon/react": "^4.3.0",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tanstack/react-query": "^4.36.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@tremor/react": "^3.18.3",
+    "@trpc/client": "^10.45.2",
+    "@trpc/react-query": "^10.45.2",
+    "@trpc/server": "^10.45.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vvo/tzdb": "^6.146.0",
+    "clsx": "^2.1.1",
+    "eslint-plugin-i18next": "^6.1.0",
+    "formik": "^2.4.6",
+    "i18next": "^23.16.8",
+    "i18next-resources-for-ts": "^1.5.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "pretty-ms": "^9.1.0",
+    "react": "^18.3.1",
+    "react-datepicker": "^7.4.0",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.2.0",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "^5.0.1",
+    "react-tooltip": "^4.5.1",
+    "tailwind-merge": "^2.5.3",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss": "^3.4.13"
+  },
+  "scripts": {
+    "clean": "rm -rf {build,.turbo,node_modules,coverage}",
+    "dev": "craco start",
+    "build": "craco build",
+    "test:watch": "craco test",
+    "test": "craco test --watchAll=false",
+    "coverage": "craco test --coverage --watchAll=false",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --check src/**/*.ts",
+    "format:fix": "prettier --write src/**/*.ts"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "babel-jest": "^29.7.0",
+    "ts-loader": "^9.5.1"
+  },
+  "jest": {
+    "globalSetup": "<rootDir>/src/setupTests.ts",
+    "moduleNameMapper": {
+      "^@web/(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "\\.ts$": "<rootDir>/../../node_modules/babel-jest"
+    }
+  }
+}

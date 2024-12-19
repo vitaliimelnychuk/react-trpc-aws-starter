@@ -1,4 +1,4 @@
-import { APP_VERSION } from '@reacttrpc-starter/config';
+import { APP_VERSION } from '@api/config';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 
 export const handler: APIGatewayProxyHandler = async () => {

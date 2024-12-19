@@ -1,0 +1,39 @@
+{
+  "toast": {
+    "close": "Close"
+  },
+  "notFound": {
+    "title": "This page does not exist.",
+    "subtitle": "The page you are looking for could not be found.",
+    "popularPages": "Popular pages",
+    "documentation": "Documentation",
+    "documentationDescription": "Learn how to integrate our tools with your app",
+    "APIReference": "API Reference",
+    "APIReferenceDescription": "A complete API reference for our libraries",
+    "guides": "Guides",
+    "guidesDescription": "Installation guides that cover popular setups",
+    "blog": "Blog",
+    "blogDescription": "Read our latest news and articles",
+    "goBackHome": "Or, go back home →"
+  },
+  "errors": {
+    "404": {
+      "title": "404: Page not found",
+      "description": "The page you are looking for could not be found."
+    }
+  },
+  "signIn": {
+    "googleOauth": {
+      "button": "Sign in with Google"
+    },
+    "alert": {
+      "title": "Error",
+      "description": "Failed to sign in"
+    }
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Dashboard"
+    }
+  }
+}
