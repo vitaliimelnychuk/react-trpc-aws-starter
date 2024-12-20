@@ -25,10 +25,27 @@ provider:
     APP_VERSION: ${env:APP_VERSION}
 
 custom:
+  prefix: ${self:service}-${self:provider.stage}
+
   esbuild:
     bundle: true
     minify: false
     sourcemap: true
+
+  # TODO: REPLACE WITH YOUR OWN DOMAIN
+  customCertificate:
+    hostedZoneNames: 'example.com.'
+    certificateName: api.example.com
+    region: ${self:provider.region}
+
+  # Route53
+  customDomain:
+    domainName: api.example.com
+    certificateName: api.example.com
+    createRoute53Record: true
+    autoDomain: true
+    endpointType: regional
+    apiType: http
 
 functions:
   http-api:

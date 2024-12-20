@@ -20,3 +20,8 @@ The project is an experiement to build React.js + TRPC serverless application ho
 | `GOOGLE_CLIENT_SECRET`  | Google client Secret for auth.                                  |
 | `GOOGLE_REDIRECT_URI`   | The URL here would be the same as your frontend URL             |
 | `JWT_SECRET`            | JWT auth secret                                                 |
+
+## Commands
+
+- `NODE_ENV=prd sls create_domain` - Create domain Route53 records
+- `NODE_ENV=prd sls create-cert` - Create certificates

@@ -33,7 +33,9 @@
     "@types/jsonwebtoken": "^9.0.6",
     "serverless": "^3.34.0",
     "serverless-esbuild": "^1.54.6",
-    "serverless-offline": "^13.9.0"
+    "serverless-offline": "^13.9.0",
+    "serverless-certificate-creator": "^1.6.0",
+    "serverless-domain-manager": "^8.0.0"
   },
   "jest": {
     "moduleNameMapper": {
