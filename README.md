@@ -12,6 +12,8 @@ The project is an experiement to build React.js + TRPC serverless application ho
 rsync -av --exclude='.git' ./react-trpc-aws-starter/ ./NEW_PROJECT_FOLDER
 ```
 
+- Replace all `reacttrpc-starter` mentions with your new `PROJECT_NAME`. You can use your editor for doing this step. The main files where the changes have to be applied would be `.eslitrc.js`, `.prettierrc.js`, `package.json` and prefix for all imports where packages are used. Please use your editor to search for all files.
+
 ## Environment variables
 
 | Environment Variable    | Description                                                     |
