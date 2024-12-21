@@ -9,9 +9,11 @@ plugins:
   - serverless-certificate-creator
 
 package:
+  individually: true
   patterns:
-    - '!node_modules/.prisma/client/libquery_engine-*'
-    - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+    - '!src/prisma/schema.prisma'
+    - '!src/prisma/libquery_engine-*'
+    - 'src/prisma/libquery_engine-rhel-*'
     - '!node_modules/prisma/libquery_engine-*'
     - '!node_modules/@prisma/engines/**'
 

@@ -62,6 +62,11 @@ jobs:
       # - name: Run migrations
       #   run: npm run db:deploy
 
+      # - name: Copy Prisma files to API
+      #   run: |
+      #     mkdir -p ./apps/api/node_modules/.prisma/client
+      #     cp -r node_modules/.prisma/client/* ./apps/api/node_modules/.prisma/client
+
       # - name: <API> Deploy
       #   working-directory: ./apps/api
       #   run: npm run deploy

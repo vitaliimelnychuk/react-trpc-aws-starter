@@ -5,13 +5,13 @@
   "scripts": {
     "clean": "rm -rf {dist,.turbo,node_modules,coverage}",
     "dev": "NODE_ENV=dev serverless offline --disableCookieValidation | pino-pretty -t",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
+    "lint": "eslint src .",
+    "lint:fix": "eslint src . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "test:watch": "jest --watch",
     "test": "jest --passWithNoTests",
-    "coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}'",
+    "coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}' --passWithNoTests",
     "package": "NODE_ENV=prd sls package",
     "deploy": "NODE_ENV=prd sls deploy --verbose"
   },
