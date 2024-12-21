@@ -6,8 +6,8 @@
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
     "db:deploy": "prisma migrate deploy",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --check \"**/*.{ts,prisma}\"",
     "format:fix": "prettier --write \"**/*.{ts,prisma}\""
   },
